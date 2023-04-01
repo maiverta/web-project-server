@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "username": "LORA13",
+        "firstName": "Lora",
+        "lastName": "Flora",
+        "gender": "Female",
+        "password": "1234"
+    },
+    {
+        "id": "2",
+        "username": "Jojo12",
+        "firstName": "Jole",
+        "lastName": "Cole",
+        "gender": "Male",
+        "password": "12333"
+    },
+    {
+        "id": "3",
+        "username": "BellaAdella",
+        "firstName": "Bella",
+        "lastName": "Adella",
+        "gender": "Female",
+        "password": "111111"
+    }
+]

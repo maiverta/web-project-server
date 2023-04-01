@@ -1,0 +1,22 @@
+@import "../../assets/css/colors.scss";
+
+.navigation{
+    background-color: $color-primary;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    a{
+        font-size: 16px;
+        text-decoration: none;
+        color: $color-primary-text;
+        font-weight: 300;
+        letter-spacing: 1.1px;
+        padding: 0 30px;
+    }
+}

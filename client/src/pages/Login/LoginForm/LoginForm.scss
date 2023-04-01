@@ -1,0 +1,33 @@
+@import "../../../assets/css/colors.scss";
+
+.login-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 40%;
+    border: solid 1px $color-divider;
+    border-radius: 5px;
+    label{
+        width: 90%;
+        padding-top: 10px;
+    }
+    input{
+        width: 90%;
+        margin: 5px 0 20px 0;
+        height: 25px;
+    }
+    button{
+        margin-bottom: 20px;
+        box-sizing: content-box;
+        height: 50px;
+        width: 85%;
+        font-size: 20px;
+        background-color: $color-accent;
+        color: $color-primary-text;
+        cursor: pointer;
+        border: 1px solid $color-divider;
+        border-radius: 5px;
+    }
+}

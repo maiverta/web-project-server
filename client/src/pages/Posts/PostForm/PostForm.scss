@@ -1,0 +1,32 @@
+@import "../../../assets/css/colors.scss";
+
+.post-form {
+    width: 100%;
+    h1{
+        font-size: 28px;
+        text-align: center;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        input, textarea, select{
+            margin: 10px 0;
+            resize: none;
+            font-size: 16px;
+            padding: 5px;
+        }
+        textarea{
+            height: 120px;
+        }
+        button{
+            padding: 15px;
+            font-size: 22px;
+            background-color: $color-accent;
+            color: $color-primary-text;
+            border-radius: 5px;
+            border: 0;
+            cursor: pointer;
+        }
+    }
+}
