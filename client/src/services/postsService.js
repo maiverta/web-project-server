@@ -51,6 +51,20 @@ export const updatePost = async (postId, post) => {
     })
 }
 
+export const likePost = async (postId, isLike, user) => {
+    const post = await fetch(`http://localhost:5000/api/posts/${postId}/user/${user}`, {
+        method: "PUT",
+        body: JSON.stringify({
+            isLike
+        }),
+        headers: {
+            // "authorization": localStorage.getItem('jwt'),
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json());
+    return post;
+}
+
 export const getPost = async (postId) => {
     const posts = await fetch(`http://localhost:5000/api/posts/${postId}`)
         .then(res => res.json());

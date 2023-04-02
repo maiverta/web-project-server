@@ -59,7 +59,7 @@ const App = () => {
                     <Route path='statistics' element={<StatisticsPage />} />
                     <Route path='map' element={<MapLocationPage />} />
                 </Routes>
-                <Footer />
+                {/* <Footer /> */}
                 <WeatherPopup />
             </BrowserRouter>
         </AppContext.Provider>

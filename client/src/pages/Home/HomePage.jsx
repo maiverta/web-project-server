@@ -1,12 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import "./HomePage.scss";
 import Post from '../../components/Post/Post';
-import { getAllPosts } from "../../services/postsService";
+import { getAllPosts, likePost } from "../../services/postsService";
 import { useNavigate } from 'react-router-dom';
 import { getSuggestedPostId } from '../../services/statisticsService';
 import { getAllTags } from '../../services/tagsService';
+import AuthContext from '../../store/auth-context';
+import { AiOutlineLike , AiFillLike} from 'react-icons/ai';
+
 const HomePage = () => {
   const [tags, setTags] = useState([]);
+  const authCtx = useContext(AuthContext);
 
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
@@ -20,6 +24,18 @@ const HomePage = () => {
   const canvas = useRef(null);
 
   const navigate = useNavigate();
+
+  const onClickLike=async (postId, isLike)=>{
+    console.log(postId, isLike)
+    const updatedPost = await likePost(postId, isLike, authCtx.email);
+    console.log(updatedPost);
+
+    const index = posts.findIndex(post=> post._id === postId);
+
+    posts[index] = updatedPost;
+    setPosts(()=> [...posts])
+    console.log(posts)
+  }
 
   useEffect(() => {
     const foodImage = new Image();
@@ -40,7 +56,7 @@ const HomePage = () => {
     let newVisiblePosts = posts.filter(post =>
       post.author?.includes(authorFilterRef.current?.value )
       && post.title?.includes(titleFilterRef.current?.value )
-      && post.tag?.includes(tagFilterRef.current?.value )
+      && (tagFilterRef.current?.value === 'all' || post.tag?.includes(tagFilterRef.current?.value ))
     );
 
     if(filter.media){
@@ -49,7 +65,7 @@ const HomePage = () => {
 
     console.log(filter)
     setVisiblePosts(newVisiblePosts);
-  }, [filter]);
+  }, [filter, posts]);
 
   //useEffect to run when the page loads
   useEffect(() => {
@@ -57,7 +73,7 @@ const HomePage = () => {
     //useEffect is synchronous, so we need to create a seperate asynchronous function for data fetching
     const fetchData = async () => {
       const data = await getAllTags();
-      setTags(data);
+      setTags([{name:"all"}, ...data]);
       //getting the data from the server
       setIsLoading(true);
       const posts = await getAllPosts();
@@ -82,7 +98,7 @@ const HomePage = () => {
     <main className="homepage">      
       <section className='filter'>
         <span className='input-container'>
-          <label htmlFor='author-filter'>Filter by author email</label>
+          <label htmlFor='author-filter'>Filter by author <br></br> Email</label>
           <input id='author-filter' placeholder='Author email' type="text" ref={authorFilterRef} onChange={(e) => setFilter({ ...filter, author: e.currentTarget.value })} />
         </span>
         <span className='input-container'>
@@ -108,7 +124,7 @@ const HomePage = () => {
       {/* Goes through all of the posts, and renders them */}
       {
         visiblePosts.map(post =>
-          <Post
+          <div key={post._id}><Post
             title={post.title}
             text={post.text}
             tag={post.tag}
@@ -116,9 +132,14 @@ const HomePage = () => {
             videoLink={post.videoLink}
             authorEmail={post.author}
             createDate={post.createDate}
+            likedUsers={post.likedByUsers}
             key={post._id}
             id={post._id}
-          />)
+          ></Post>
+          <div>
+          {post.likedByUsers?.findIndex(user=> user === authCtx.email) === -1 ?<AiOutlineLike onClick={()=> onClickLike(post._id,true)}></AiOutlineLike>  
+          :<AiFillLike onClick={()=> onClickLike(post._id, false)}></AiFillLike>}</div></div>
+           )
       }
     </main>
   )

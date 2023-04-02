@@ -3,6 +3,7 @@ const Comment = require('../models/commentModel');
 
 exports.comment_create = async function (req, res) {
     console.log("post  comments...")
+    console.log(req.user)
 
     
         res.json(await Comment.create(req.body))

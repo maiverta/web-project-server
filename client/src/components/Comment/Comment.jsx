@@ -1,19 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Button, Comment, Form, Header } from 'semantic-ui-react'
 import { addComment, getCommentsOfPost } from '../../services/commentService'
+import AuthContext from '../../store/auth-context'
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 const singleComment=(comment)=>{
-    return (<Comment>
+    return (<Comment key={comment._id}>
         <PersonRoundedIcon></PersonRoundedIcon>
       <Comment.Content>
-        <Comment.Author as='a'>Matt</Comment.Author>
+        <Comment.Author as='a'>{comment.user}</Comment.Author>
         <Comment.Metadata>
           <div>{comment.updatedAt}</div>
         </Comment.Metadata>
-        <Comment.Text>comment</Comment.Text>
-        <Comment.Actions>
-          <Comment.Action>Reply</Comment.Action>
-        </Comment.Actions>
+        <Comment.Text>{comment.text}</Comment.Text>
+       
       </Comment.Content>
     </Comment>)
 }
@@ -21,6 +20,7 @@ const CommentExampleComment = ({postId}) => {
     const [postComments, setPostComments] = useState([])
     const [message, setMessage] = useState('');
     const commentText = useRef();
+    const authCtx = useContext(AuthContext);
 
 
     useEffect(async() => {
@@ -32,7 +32,7 @@ const CommentExampleComment = ({postId}) => {
         console.log(commentText.current.value)
         const newCommentToAdd= {
             text: commentText.current.value,
-            user: 'may2vvvv',
+            user: authCtx.email,
             post: postId
         }
         const newComment = await addComment(newCommentToAdd);

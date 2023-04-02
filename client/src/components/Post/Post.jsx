@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import "./Post.scss";
 
-const Post = ({ title, text, imageLink, videoLink, authorEmail, createDate, id, tag }) => {
 
+
+
+const Post = (props) => {
+    const {title, text, imageLink, videoLink, authorEmail, createDate, id, tag, likesUsers} = props
     const navigate = useNavigate();
     
     return (
@@ -24,7 +27,7 @@ const Post = ({ title, text, imageLink, videoLink, authorEmail, createDate, id, 
 
             {/* Post image, shows only if the imageLink property is not null  */}
             {imageLink &&
-                <img src={imageLink} alt={title} /> }
+                <img src={imageLink} alt={title} /> }   
         </article>
     )
 }

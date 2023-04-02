@@ -20,17 +20,17 @@ const options = {
 
 exports.getApiData =   async function ()  {
   
-  const response =  await axios.request(options);
-  // console.log(response.data.results.data)
-  const commercials =  response.data.results.data.map((com)=>{
-    return {
-      name: com.name,
-      description: com.description,
-      numberOfReviews: com.num_reviews,
-      imageLink: com.photo.images.medium.url
-    }
-  });
-  console.log(commercials)
-  await Commercial.insertMany(commercials)
+  // const response =  await axios.request(options);
+  // // console.log(response.data.results.data)
+  // const commercials =  response.data.results.data.map((com)=>{
+  //   return {
+  //     name: com.name,
+  //     description: com.description,
+  //     numberOfReviews: com.num_reviews,
+  //     imageLink: com.photo.images.medium.url
+  //   }
+  // });
+  // console.log(commercials)
+  // await Commercial.insertMany(commercials)
 
 }

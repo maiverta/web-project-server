@@ -15,6 +15,8 @@ router.get('/:id',post_controller.post_findById);
 
 router.delete('/:id', post_controller.post_deleteOne);
 
+router.put('/:id/user/:userId', post_controller.post_update_like);
+
 router.put('/:id', post_controller.post_update);
 
 module.exports = router;

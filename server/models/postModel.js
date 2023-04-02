@@ -32,6 +32,10 @@ const postSchema = new mongoose.Schema({
     counter: {
         type: Number,
         required: true
+    },
+    likedByUsers:{
+        type: Array,
+        default: []
     }
 
 });

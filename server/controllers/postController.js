@@ -32,7 +32,8 @@ exports.post_create = function (req, res) {
             imageLink,
             author,
             tag,
-            counter
+            counter, 
+            likedByUsers: []
         });
         post.save();
         res.json({success: true});
@@ -84,6 +85,7 @@ exports.post_deleteOne = function (req, res) {
 }
 
 exports.post_update = function (req, res) {
+    console.log('ffffffsefgedgf')
     const title = req.body.title || '';
     const text = req.body.text || '';
     const imageLink = req.body.imageLink || '';
@@ -101,6 +103,28 @@ exports.post_update = function (req, res) {
                 res.json({error: err.message})
             } else {
                 res.json({success: true});
+            }
+        })
+};
+
+exports.post_update_like = async function (req, res) {
+    console.log(req.params.id + '111')
+    console.log(req.body.isLike)
+    const postToUpdate = await Post.findOne({'_id': req.params.id}).exec();
+    if(req.body.isLike){
+        postToUpdate.likedByUsers.push(req.params.userId)
+    } else{
+        const userIndex = postToUpdate.likedByUsers.findIndex(user=> user === req.params.userId)
+        postToUpdate.likedByUsers.splice(userIndex, 1)
+    }
+    console.log(postToUpdate.likedByUsers)
+
+    Post.updateOne({'_id': req.params.id},
+      postToUpdate, {}, (err, r) => {
+            if (err) {
+                res.json({error: err.message})
+            } else {
+                res.json(postToUpdate);
             }
         })
 };
