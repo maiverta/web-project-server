@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../App';
 import { logout } from '../../services/sessionService';
+import AuthContext from '../../store/auth-context';
 import "./NavigationBar.scss";
 // const NavigationBar = () => {
 
@@ -24,9 +25,6 @@ import "./NavigationBar.scss";
 // }
 
 // export default NavigationBar
-
-
-
 
 
 import {
@@ -60,12 +58,16 @@ const useStyles = makeStyles((theme) => ({
 
 function NavigationBar() {
   const classes = useStyles();
-  const { isLoggedIn, setIsLoggedIn, user } = useContext(AppContext);
+  const {setIsLoggedIn, user } = useContext(AppContext);
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedin;
 
   const onLogoutClick = () => {
     setIsLoggedIn(false);
     logout();
   }
+
+  
 
   return (
     <AppBar position="static">
@@ -90,6 +92,7 @@ function NavigationBar() {
             { isLoggedIn&& user?.isAdmin && <Link to="/statistics" className={classes.link}>
             Statistics
             </Link>} 
+            {isLoggedIn && <Link to="/posts/new" className={classes.link}>New Post</Link>}
 
             { isLoggedIn && <Link to="/tags" className={classes.link}>
               tags
@@ -97,8 +100,8 @@ function NavigationBar() {
             {!isLoggedIn &&<Link to="/login" className={classes.link}>
               login
             </Link>}
-         {isLoggedIn && <Link to="/login"  className={classes.link} onClick={onLogoutClick}>Logout</Link>}
-
+            {isLoggedIn && <Link to="/login"  className={classes.link} onClick={onLogoutClick}>Logout</Link>}
+            {isLoggedIn && <Link to="/profile" className={classes.link}>Profile</Link>}
             <Link to="/faq" className={classes.link}>
               FAQ
             </Link>
