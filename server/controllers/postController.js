@@ -13,7 +13,7 @@ exports.post_create = function (req, res) {
     const text = req.body.text || '';
     const imageLink = req.body.imageLink || '';
     const tag = req.body.tag || '';
-    const author = req.user.id || '';
+    const author = req.body.author || '';
     const counter = 0;
 
     const requestBody = {title, text, imageLink};
@@ -82,8 +82,8 @@ exports.post_get = function (req, res) {
 };
 
 exports.post_getMyPosts = async function (req, res){
-    console.log(req.params.userId)
-    return res.send(await Post.find({ author: req.params.userId}));
+    console.log(req.params.email)
+    return res.send(await Post.find({ author: req.params.email}));
 }
 
 exports.post_findById = function (req, res) {

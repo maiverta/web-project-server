@@ -39,7 +39,8 @@ const PostForm = ({ publishCallback, formTitle, initialPostTitle, initialPostCon
             text: postContentRef.current.value,
             imageLink: postImageLinkRef.current.value,
             videoLink: postVideoLinkRef.current.value,
-            tag: postTagRef.current.value
+            tag: postTagRef.current.value,
+            author: authCtx.email
             
         }
 
