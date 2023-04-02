@@ -27,7 +27,7 @@ const postSchema = new mongoose.Schema({
     },
     tag: {
         type: String,
-        required: true
+        // required: true
     },
     counter: {
         type: Number,

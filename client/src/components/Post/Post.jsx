@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Post.scss";
 
-const Post = ({ title, text, imageLink, videoLink, authorName, createDate, id, tag }) => {
+const Post = ({ title, text, imageLink, videoLink, authorEmail, createDate, id, tag }) => {
 
     const navigate = useNavigate();
     
@@ -11,7 +11,7 @@ const Post = ({ title, text, imageLink, videoLink, authorName, createDate, id, t
             <h2 onClick={() => navigate(`/posts/${id}`)}>{title}</h2>
 
             {/* Post author*/}
-            <h3>Post on {tag}, Written by: {authorName} at {new Date(createDate).toUTCString()}</h3>
+            <h3>Post on {tag}, Written by: {authorEmail} at {new Date(createDate).toUTCString()}</h3>
             
             {/* Post text */}
             <p>{text}</p>
