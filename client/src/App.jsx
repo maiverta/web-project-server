@@ -52,6 +52,7 @@ const App = () => {
                     <Route path='posts/edit/:postId' element={<EditPostPage />} />
                     {/* <Route path='posts' element={<PostsListPage key='1'/>} /> */}
                     <Route path='myPosts' element={<PostsListPage key='1'/>} />
+
                     <Route path='posts/:postId' element={<SinglePostPage />} />
                     <Route path='statistics' element={<StatisticsPage />} />
                     <Route path='map' element={<MapLocationPage />} />
