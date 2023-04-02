@@ -3,6 +3,8 @@ const posts = require('./routes/postRoute');
 const tags = require('./routes/tagRoute');
 const maps = require('./routes/mapRoute');
 const commercials = require('./routes/commercialRoute');
+const comments = require('./routes/commentRoute');
+
 
 const statistics = require('./routes/statisticsRoute');
 const express = require('express');
@@ -17,6 +19,8 @@ router.use('/api/posts', posts);
 router.use('/api/tags', tags);
 
 router.use('/api/commercials', commercials);
+
+router.use('/api/comments', comments);
 
 router.use('/api/maps', maps);
 
