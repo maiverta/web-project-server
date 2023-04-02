@@ -122,7 +122,7 @@ const HomePage = () => {
       {isLoading && <h2>Loading posts...</h2>}
 
       {/* Goes through all of the posts, and renders them */}
-      {
+      <div className='flex-posts'>{
         visiblePosts.map(post =>
           <div key={post._id}><Post
             title={post.title}
@@ -139,8 +139,8 @@ const HomePage = () => {
           <div>
           {post.likedByUsers?.findIndex(user=> user === authCtx.email) === -1 ?<AiOutlineLike onClick={()=> onClickLike(post._id,true)}></AiOutlineLike>  
           :<AiFillLike onClick={()=> onClickLike(post._id, false)}></AiFillLike>}</div></div>
-           )
-      }
+         ) 
+      }</div>
     </main>
   )
 }

@@ -59,7 +59,7 @@ const PostForm = ({ publishCallback, formTitle, initialPostTitle, initialPostCon
                 <input type="text" placeholder='Post title' ref={postTitleRef} defaultValue={initialPostTitle}></input>
                 <textarea placeholder='Post Content' ref={postContentRef} defaultValue={initialPostContent}></textarea>
                 <input type="url" placeholder='Post Image Link' ref={postImageLinkRef} defaultValue={initialImageLink}></input>
-                <input type="url" placeholder='Post Video Link' ref={postVideoLinkRef} defaultValue={initialVideoLink}></input>
+                {/* <input type="url" placeholder='Post Video Link' ref={postVideoLinkRef} defaultValue={initialVideoLink}></input> */}
                 <select placeholder='Tag' ref={postTagRef} defaultValue="1">
                     <option value="None">None</option>
                     {tags && tags.map(tag => <option value={tag._id} defaultValue={initialPostTag}>{tag.name}</option>)}
