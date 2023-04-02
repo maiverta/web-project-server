@@ -1,4 +1,7 @@
 body{
-    background-image: url('./assets/background.jpg');
+    background-Image:url("../public/images.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 
 }

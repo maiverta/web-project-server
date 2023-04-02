@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import AuthContext from '../../../store/auth-context';
 
 const PostForm = ({ publishCallback, formTitle, initialPostTitle, initialPostContent, initialImageLink, initialVideoLink, initialPostTag }) => {
-    
+    //
     const authCtx = useContext(AuthContext);
     const [tags, setTags] = useState([]);
 

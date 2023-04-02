@@ -4,14 +4,16 @@ import Post from '../../components/Post/Post';
 import { getAllPosts } from "../../services/postsService";
 import { useNavigate } from 'react-router-dom';
 import { getSuggestedPostId } from '../../services/statisticsService';
+import { getAllTags } from '../../services/tagsService';
 const HomePage = () => {
+  const [tags, setTags] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [visiblePosts, setVisiblePosts] = useState([]);
   const [filter, setFilter] = useState({ author: "", title: "", media: false });
   const [image, setImage] = useState(null);
-
+  const tagFilterRef = useRef();
   const mediaFilterRef = useRef();
   const authorFilterRef = useRef();
   const titleFilterRef = useRef();
@@ -38,6 +40,7 @@ const HomePage = () => {
     let newVisiblePosts = posts.filter(post =>
       post.authorName.includes(authorFilterRef.current.value)
       && post.title.includes(titleFilterRef.current.value)
+      && post.tag.includes(tagFilterRef.current.value)
     );
 
     if(filter.media){
@@ -53,7 +56,8 @@ const HomePage = () => {
 
     //useEffect is synchronous, so we need to create a seperate asynchronous function for data fetching
     const fetchData = async () => {
-
+      const data = await getAllTags();
+      setTags(data);
       //getting the data from the server
       setIsLoading(true);
       const posts = await getAllPosts();
@@ -76,17 +80,20 @@ const HomePage = () => {
   }
   return (
     <main className="homepage">      
-      <button onClick={goToSuggestedPost}>
-        Click to suggest a post!
-      </button>
-
       <section className='filter'>
         <span className='input-container'>
-          <label htmlFor='author-filter'>Filter by author name</label>
-          <input id='author-filter' placeholder='Author name' type="text" ref={authorFilterRef} onChange={(e) => setFilter({ ...filter, author: e.currentTarget.value })} />
+          <label htmlFor='author-filter'>Filter by author email</label>
+          <input id='author-filter' placeholder='Author email' type="text" ref={authorFilterRef} onChange={(e) => setFilter({ ...filter, author: e.currentTarget.value })} />
         </span>
         <span className='input-container'>
-          <label htmlFor='title-filter'>Filter by title</label>
+        <label htmlFor='title-filter'>Filter by <br></br> Tag</label>
+        <select placeholder='Tag' ref={tagFilterRef} defaultValue="1"  onChange={(e) => setFilter({ ...filter, tag: e.currentTarget.value })}>
+                    <option value="None">None</option>
+                    {tags && tags.map(tag => <option value={tag.name} >{tag.name}</option>)}
+                </select>
+        </span>
+        <span className='input-container'>
+          <label htmlFor='title-filter'>Filter by  <br></br>  Title</label>
           <input id='title-filter' placeholder='Title' type="text" ref={titleFilterRef} onChange={(e) => setFilter({ ...filter, title: e.currentTarget.value })} />
         </span>
         <span className='input-container'>
