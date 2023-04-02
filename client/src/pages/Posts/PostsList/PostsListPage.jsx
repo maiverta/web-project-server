@@ -26,7 +26,7 @@ const PostsListPage = () => {
             }
             else{
              data = await getAllPosts();
-            // }
+            }
             setPosts(data);
         }
         fetchData();

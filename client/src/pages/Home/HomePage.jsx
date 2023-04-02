@@ -38,9 +38,9 @@ const HomePage = () => {
 
   useEffect(() => {
     let newVisiblePosts = posts.filter(post =>
-      post.author.includes(authorFilterRef.current.value)
-      && post.title.includes(titleFilterRef.current.value)
-      && post.tag.includes(tagFilterRef.current.value)
+      post.author?.includes(authorFilterRef.current?.value )
+      && post.title?.includes(titleFilterRef.current?.value )
+      && post.tag?.includes(tagFilterRef.current?.value )
     );
 
     if(filter.media){
