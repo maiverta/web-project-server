@@ -48,3 +48,13 @@
 label{
     font-size: medium;
 }
+
+.flex-posts{
+    max-height: 70vh;
+    overflow: auto;
+    margin: 50px;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+}

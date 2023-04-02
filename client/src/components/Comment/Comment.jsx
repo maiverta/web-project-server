@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Button, Comment, Form, Header } from 'semantic-ui-react'
 import { addComment, getCommentsOfPost } from '../../services/commentService'
 import AuthContext from '../../store/auth-context'
+import './Comment.css'
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 const singleComment=(comment)=>{
     return (<Comment key={comment._id}>
@@ -49,8 +50,10 @@ const CommentExampleComment = ({postId}) => {
    </div>
     <Form reply>
       <textarea ref={commentText}/>
-      <Button content='Add Reply' labelPosition='left' icon='edit' primary onClick={handleAddComment}/>
+      
     </Form>
+    <Button className='button' content='Add Reply' labelPosition='left' icon='edit' primary onClick={handleAddComment}/>
+
   </Comment.Group>)
 }
 
