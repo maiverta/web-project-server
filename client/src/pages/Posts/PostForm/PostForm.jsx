@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import AuthContext from '../../../store/auth-context';
 
 const PostForm = ({ publishCallback, formTitle, initialPostTitle, initialPostContent, initialImageLink, initialVideoLink, initialPostTag }) => {
-    
+    //
     const authCtx = useContext(AuthContext);
     const [tags, setTags] = useState([]);
 
@@ -39,7 +39,8 @@ const PostForm = ({ publishCallback, formTitle, initialPostTitle, initialPostCon
             text: postContentRef.current.value,
             imageLink: postImageLinkRef.current.value,
             videoLink: postVideoLinkRef.current.value,
-            tag: postTagRef.current.value
+            tag: postTagRef.current.value,
+            author: authCtx.email
             
         }
 

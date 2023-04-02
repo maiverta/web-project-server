@@ -9,10 +9,10 @@ export const getAllPosts = async () => {
     return posts;
 }
 
-export const getMyPosts = async (userId) => {
-    console.log(userId)
+export const getMyPosts = async (email) => {
+    console.log(email)
     //made to act like a server, waits a second and then replies
-    const posts = await fetch(`http://localhost:5000/api/posts/user/${userId}`)
+    const posts = await fetch(`http://localhost:5000/api/posts/user/${email}`)
         .then(res => res.json());
 
     return posts;
@@ -25,7 +25,7 @@ export const publishNewPost = async (post) => {
         method: "POST",
         body: JSON.stringify(post),
         headers: {
-            "authorization": localStorage.getItem('jwt'),
+            // "authorization": localStorage.getItem('jwt'),
             "Content-Type": "application/json"
         }
     }).then(res => res.json());
@@ -35,7 +35,7 @@ export const deletePost = async (postId) => {
     await fetch(`http://localhost:5000/api/posts/${postId}`, {
         method: "DELETE",
         headers: {
-            "authorization": localStorage.getItem('jwt')
+            // "authorization": localStorage.getItem('jwt')
         }
     }).then(res => res.json());
 }
@@ -45,7 +45,7 @@ export const updatePost = async (postId, post) => {
         method: "PUT",
         body: JSON.stringify(post),
         headers: {
-            "authorization": localStorage.getItem('jwt'),
+            // "authorization": localStorage.getItem('jwt'),
             "Content-Type": "application/json"
         }
     })

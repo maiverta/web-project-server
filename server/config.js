@@ -8,6 +8,6 @@ const PORT = process.env.PORT || 5000;
 module.exports = {
     mongoConnectionString: `mongodb://${DB_ADDRESS}/${DB_NAME}`, // database connection string
     dbName: DB_NAME, // database name
-    jwtSecret: JWTSECRET, // secret for encrypting the jwt token
+    // jwtSecret: JWTSECRET, // secret for encrypting the jwt token
     port: PORT //port to run the application in
 }

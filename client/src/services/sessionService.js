@@ -26,7 +26,7 @@ export const login = async (username, password) => {
         //if login is successful, removes it from 
         if(res.success)
         {
-            localStorage.setItem('jwt', res.token);
+            // localStorage.setItem('jwt', res.token);
             console.log(res);
             user = res.user
             success = true;
