@@ -53,7 +53,8 @@ const App = () => {
                     <Route path='posts/new' element={<NewPostPage />} />
                     <Route path='posts/edit/:postId' element={<EditPostPage />} />
                     <Route path='commercials' element={<Com/>} />
-                    <Route path='myPosts' element={<PostsListPage key='2'/>} />
+                    {/* <Route path='posts' element={<PostsListPage key='1'/>} /> */}
+                    <Route path='myPosts' element={<PostsListPage key='1'/>} />
                     <Route path='posts/:postId' element={<SinglePostPage />} />
                     <Route path='statistics' element={<StatisticsPage />} />
                     <Route path='map' element={<MapLocationPage />} />

@@ -38,7 +38,7 @@ const HomePage = () => {
 
   useEffect(() => {
     let newVisiblePosts = posts.filter(post =>
-      post.authorName.includes(authorFilterRef.current.value)
+      post.author.includes(authorFilterRef.current.value)
       && post.title.includes(titleFilterRef.current.value)
       && post.tag.includes(tagFilterRef.current.value)
     );
@@ -114,7 +114,7 @@ const HomePage = () => {
             tag={post.tag}
             imageLink={post.imageLink}
             videoLink={post.videoLink}
-            authorName={post.authorName}
+            authorEmail={post.author}
             createDate={post.createDate}
             key={post.id}
             id={post.id}
