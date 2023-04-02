@@ -58,9 +58,9 @@ function NavigationBar() {
             <Link to="/map" className={classes.link}>
               map
             </Link>
-            { isLoggedIn && <Link to="/posts" className={classes.link}>
+            {/* { isLoggedIn && <Link to="/posts" className={classes.link}>
               Posts
-            </Link>}
+            </Link>} */}
             { isLoggedIn && <Link to="/myPosts" className={classes.link}>
               My posts
             </Link>}

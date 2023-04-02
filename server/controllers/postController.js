@@ -44,41 +44,16 @@ exports.post_create = function (req, res) {
 
 }
 
-exports.post_get = function (req, res) {
-    Post.aggregate([
-            {
-                $lookup: {
-                    "from": "users",
-                    "localField": "author",
-                    "foreignField": "_id",
-                    "as": "author"
-                },
-            },
-            {
-                $unwind: "$author"
-            },
-            {
-                $project:
-                    {
-                        "id": "$_id",
-                        "title": 1,
-                        "text": 1,
-                        "imageLink": 1,
-                        "videoLink": 1,
-                        "createDate": 1,
-                        "tag": 1,
-                        "authorName": "$author.username",
-                    }
-            },
-            {
-                $sort:
-                    {
-                        "createDate": -1
-                    }
-            }
+exports.post_get = async function (req, res) {
 
-        ],
-        (err, docs) => res.json(docs));
+    const allDocs = await Post.find()
+
+    if (Object.keys(allDocs).length > 0) {
+        res.send(allDocs)
+    } else {
+        res.status(204).json({})
+    }
+
 };
 
 exports.post_getMyPosts = async function (req, res){
@@ -86,56 +61,15 @@ exports.post_getMyPosts = async function (req, res){
     return res.send(await Post.find({ author: req.params.email}));
 }
 
-exports.post_findById = function (req, res) {
-    let doc = null;
-    Post.findOneAndUpdate({_id: req.params.id},  {$inc: {counter: 1}}, {}, (err, r) => {
-        if (err) {
-            res.json({error: err.message})
-        }
-    })
+exports.post_findById = async function (req, res) {
+    console.log(`getting post by id number:  ${req.params.id}`)
+    const doc = await Post.findOne({'_id': req.params.id}).exec()
 
-    Post.aggregate([
-        {
-            $match:
-                {
-                    "_id": mongoose.Types.ObjectId(req.params.id)
-                }
-        },
-        {
-            $lookup:
-                {
-                    "from": "users",
-                    "localField": "author",
-                    "foreignField": "_id",
-                    "as": "author"
-                },
-        },
-        {
-            $unwind: "$author"
-        },
-        {
-            $project:
-                {
-                    "id": "$_id",
-                    "title": 1,
-                    "text": 1,
-                    "imageLink": 1,
-                    "videoLink": 1,
-                    "createDate": 1,
-                    "tag": 1,
-                    "authorName": "$author.username",
-                }
-        },
-        {
-            $sort:
-                {
-                    "createDate": -1
-                }
-        }
-
-    ], {allowDiskUse: true}, (err, docs) => {
-        res.json(docs[0])
-    })
+    if (doc != null) {
+        res.send(doc)
+    } else {
+        res.status(204).json({})
+    }
     ;
 }
 
