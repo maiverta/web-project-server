@@ -58,12 +58,12 @@ const useStyles = makeStyles((theme) => ({
 
 function NavigationBar() {
   const classes = useStyles();
-  const {setIsLoggedIn, user } = useContext(AppContext);
+  const {user} = useContext(AppContext);
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedin;
 
   const onLogoutClick = () => {
-    setIsLoggedIn(false);
+    isLoggedIn = false;
     logout();
   }
 
