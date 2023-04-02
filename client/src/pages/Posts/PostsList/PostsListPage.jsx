@@ -16,13 +16,13 @@ const PostsListPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             let data;
-            if(location.pathname.includes('myPosts')){
-                console.log(user)
-                data= await getMyPosts(user._id);
-            }
-            else{
+            // if(location.pathname.includes('myPosts')){
+            //     console.log(user)
+            //     data= await getMyPosts(user._id);
+            // }
+            // else{
              data = await getAllPosts();
-            }
+            // }
             setPosts(data);
         }
         fetchData();

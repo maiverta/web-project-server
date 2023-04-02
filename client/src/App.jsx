@@ -19,6 +19,10 @@ import EditTagPage from './pages/Tags/EditTag/EditTagPage';
 import TagsListPage from './pages/Tags/TagsList/TagsListPage';
 import MapLocationPage from './pages/Map/MapLocationPage';
 import Com from './components/commercial';
+import AuthPage from './pages/Login/AuthPage';
+import UserProfile from './components/Profile/UserProfile';
+
+
 
 
 //application context
@@ -34,8 +38,10 @@ const App = () => {
             <BrowserRouter>
                 <NavigationBar />
                 <Routes>
+                    {/* <Route path='/auth' element={<AuthPage />} /> */}
                     <Route path='/' element={<HomePage />} />
-                    <Route path='login' element={<LoginPage />} />
+                    <Route path='profile' element={<UserProfile />} />
+                    <Route path='login' element={<AuthPage />} />
                     <Route path='/authors/new' element={<NewAuthorPage />} />
                     <Route path='/authors/edit/:authorName' element = {<EditAuthorPage />}/>
                     <Route path='/authors' element = {<AuthorsListPage />}/>
@@ -44,7 +50,7 @@ const App = () => {
                     <Route path='/tags' element = {<TagsListPage />}/>
                     <Route path='posts/new' element={<NewPostPage />} />
                     <Route path='posts/edit/:postId' element={<EditPostPage />} />
-                    <Route path='posts' element={<PostsListPage key='1'/>} />
+                    {/* <Route path='posts' element={<PostsListPage key='1'/>} /> */}
                     <Route path='myPosts' element={<PostsListPage key='2'/>} />
                     <Route path='posts/:postId' element={<SinglePostPage />} />
                     <Route path='statistics' element={<StatisticsPage />} />

@@ -4,8 +4,12 @@ import { useState } from 'react';
 import { getAllTags } from '../../../services/tagsService';
 import { validatePost } from '../../../services/validationsService';
 import "./PostForm.scss";
-const PostForm = ({ publishCallback, formTitle, initialPostTitle, initialPostContent, initialImageLink, initialVideoLink, initialPostTag }) => {
+import { useContext } from 'react';
+import AuthContext from '../../../store/auth-context';
 
+const PostForm = ({ publishCallback, formTitle, initialPostTitle, initialPostContent, initialImageLink, initialVideoLink, initialPostTag }) => {
+    
+    const authCtx = useContext(AuthContext);
     const [tags, setTags] = useState([]);
 
     const postTitleRef = useRef();
@@ -13,6 +17,7 @@ const PostForm = ({ publishCallback, formTitle, initialPostTitle, initialPostCon
     const postImageLinkRef = useRef();
     const postVideoLinkRef = useRef();
     const postTagRef = useRef();
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -35,6 +40,7 @@ const PostForm = ({ publishCallback, formTitle, initialPostTitle, initialPostCon
             imageLink: postImageLinkRef.current.value,
             videoLink: postVideoLinkRef.current.value,
             tag: postTagRef.current.value
+            
         }
 
         const validationErrorMessage = validatePost(post);
