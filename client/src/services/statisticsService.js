@@ -16,7 +16,7 @@ export const getSuggestedPostId = async () => {
     const suggestedPostId = await fetch(`http://localhost:5000/api/stats/suggestedPost`, {
         method: "GET",
         headers: {
-            "authorization": localStorage.getItem('jwt'),
+            // "authorization": localStorage.getItem('jwt'),
         }
     })
     .then(res => res.text())

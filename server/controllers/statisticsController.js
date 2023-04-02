@@ -35,7 +35,7 @@ exports.get_tagsByPost = function (req, res) {
         {
             $lookup: {
                 "from": "tags",
-                "localField": "tag",
+                "localField": "tag._id",
                 "foreignField": "tag.name",
                 "as": "tag"
             },

@@ -15,7 +15,7 @@ export const AddNewTag = async (tag) => {
         method: "POST",
         body: JSON.stringify(tag),
         headers: {
-            "authorization": localStorage.getItem('jwt'),
+            // "authorization": localStorage.getItem('jwt'),
             "Content-Type": "application/json"
         }
     }).then(res => res.json());
@@ -25,7 +25,7 @@ export const deleteTag = async (tagId) => {
     await fetch(`http://localhost:5000/api/tags/${tagId}`, {
         method: "DELETE",
         headers: {
-            "authorization": localStorage.getItem('jwt')
+            // "authorization": localStorage.getItem('jwt')
         }
     }).then(res => res.json());
 }
@@ -35,7 +35,7 @@ export const updateTag = async (tagId, tag) => {
         method: "PUT",
         body: JSON.stringify(tag),
         headers: {
-            "authorization": localStorage.getItem('jwt'),
+            // "authorization": localStorage.getItem('jwt'),
             "Content-Type": "application/json"
         }
     })

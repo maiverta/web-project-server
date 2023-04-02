@@ -62,7 +62,7 @@ const PostForm = ({ publishCallback, formTitle, initialPostTitle, initialPostCon
                 <input type="url" placeholder='Post Video Link' ref={postVideoLinkRef} defaultValue={initialVideoLink}></input>
                 <select placeholder='Tag' ref={postTagRef} defaultValue="1">
                     <option value="None">None</option>
-                    {tags && tags.map(tag => <option value={tag.name} defaultValue={initialPostTag}>{tag.name}</option>)}
+                    {tags && tags.map(tag => <option value={tag._id} defaultValue={initialPostTag}>{tag.name}</option>)}
                 </select>
                 <button type='submit'>Publish</button>
             </form>

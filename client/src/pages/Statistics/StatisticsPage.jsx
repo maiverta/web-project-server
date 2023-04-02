@@ -35,10 +35,10 @@ const StatisticsPage = () => {
                 <h4>Posts per author</h4>
                 <PieChart id="authors-chart" data={authorsStats} />
             </span>
-            <span className='chart-container'>
+            {/* <span className='chart-container'>
                 <h4>Posts per tag</h4>
                 <PieChart id="tags-chart" data={tagsStats} />
-            </span>
+            </span> */}
         </main>
 
     )
