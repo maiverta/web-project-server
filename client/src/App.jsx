@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "./App.css";
 import NavigationBar from './components/NavigationBar/NavigationBar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Home/HomePage';
@@ -34,6 +35,7 @@ const App = () => {
     const [user, setUser] = useState({});
 
     return (
+        <div className="image">
         <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser}}>
             <BrowserRouter>
                 <NavigationBar />
@@ -50,9 +52,9 @@ const App = () => {
                     <Route path='/tags' element = {<TagsListPage />}/>
                     <Route path='posts/new' element={<NewPostPage />} />
                     <Route path='posts/edit/:postId' element={<EditPostPage />} />
+                    <Route path='commercials' element={<Com/>} />
                     {/* <Route path='posts' element={<PostsListPage key='1'/>} /> */}
                     <Route path='myPosts' element={<PostsListPage key='1'/>} />
-
                     <Route path='posts/:postId' element={<SinglePostPage />} />
                     <Route path='statistics' element={<StatisticsPage />} />
                     <Route path='map' element={<MapLocationPage />} />
@@ -61,6 +63,7 @@ const App = () => {
                 <WeatherPopup />
             </BrowserRouter>
         </AppContext.Provider>
+        </div>
     )
 }
 

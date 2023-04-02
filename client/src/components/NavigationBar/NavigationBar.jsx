@@ -77,8 +77,8 @@ function NavigationBar() {
             </Link>}
             {isLoggedIn && <Link to="/login"  className={classes.link} onClick={onLogoutClick}>Logout</Link>}
             {isLoggedIn && <Link to="/profile" className={classes.link}>Profile</Link>}
-            <Link to="/faq" className={classes.link}>
-              FAQ
+            <Link to="/commercials" className={classes.link}>
+              Commercials
             </Link>
           </div>
       </Toolbar>
