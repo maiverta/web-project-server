@@ -1,5 +1,21 @@
 .post-page{
     padding-top: 60px;
     display: flex;
-    justify-content: center;
+    flex: 3 1;  
+    flex-direction: row;
+    justify-content: space-between;
 }
+
+.post{
+    margin: 0 auto;
+}
+
+.comment-sectionn{
+    margin: 10px;
+    max-height: 70vh;
+    overflow: auto;
+}
+
+
+
+

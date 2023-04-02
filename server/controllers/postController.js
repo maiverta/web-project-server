@@ -13,6 +13,8 @@ exports.post_create = function (req, res) {
     const text = req.body.text || '';
     const imageLink = req.body.imageLink || '';
     const tag = req.body.tag || '';
+    console.log('gty')
+    console.log(req.user)
     const author = req.user.id || '';
     const counter = 0;
 

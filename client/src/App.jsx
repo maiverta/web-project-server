@@ -50,7 +50,7 @@ const App = () => {
                     <Route path='/tags' element = {<TagsListPage />}/>
                     <Route path='posts/new' element={<NewPostPage />} />
                     <Route path='posts/edit/:postId' element={<EditPostPage />} />
-                    <Route path='posts' element={<PostsListPage key='1'/>} />
+                    {/* <Route path='posts' element={<PostsListPage key='1'/>} /> */}
                     <Route path='myPosts' element={<PostsListPage key='2'/>} />
                     <Route path='posts/:postId' element={<SinglePostPage />} />
                     <Route path='statistics' element={<StatisticsPage />} />
