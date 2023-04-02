@@ -34,11 +34,12 @@ function NavigationBar() {
   // const {setIsLoggedIn} = useContext(AppContext);
 
   const authCtx = useContext(AuthContext);
+
   const isLoggedIn = authCtx.isLoggedin;
 
   const onLogoutClick = () => {
     authCtx.isLoggedin = false;
-    
+    isLoggedIn = authCtx.isLoggedin;
     // setIsLoggedIn(false);
     // logout();
   }
