@@ -116,8 +116,8 @@ const HomePage = () => {
             videoLink={post.videoLink}
             authorEmail={post.author}
             createDate={post.createDate}
-            key={post.id}
-            id={post.id}
+            key={post._id}
+            id={post._id}
           />)
       }
     </main>
